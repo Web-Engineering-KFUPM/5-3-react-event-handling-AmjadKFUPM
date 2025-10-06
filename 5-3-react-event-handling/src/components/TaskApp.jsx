@@ -17,6 +17,7 @@ export default function TaskApp() {
   
   
   const handleDelete = (id) => {
+    setTasks(prev => prev.filter(t => t.id !== id));
   };
 
   
