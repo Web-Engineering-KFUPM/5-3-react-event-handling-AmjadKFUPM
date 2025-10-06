@@ -5,13 +5,18 @@ export default function TaskApp() {
   
   const [text, setText] = useState("");
 
-  const handleSubmit = () => {
-   
-  };
+  const [tasks, setTasks] = useState([]);
 
+  const handleSubmit = () => {
+    const value = text.trim();
+    if (value) {
+      setTasks((prev) => [...prev, { id: Date.now(), text: value }]);
+      setText("");
+    }
+  };
+  
   
   const handleDelete = (id) => {
-    // TODO: filter tasks by id to remove the clicked one
   };
 
   
@@ -42,7 +47,7 @@ export default function TaskApp() {
 
       {/*Render Task List and Enable Delete */}
       {/*Pass tasks and onDelete */}
-      <TaskList /* tasks={tasks} onDelete={handleDelete} */ />
+      <TaskList tasks={tasks} onDelete={handleDelete} />
 
       {/*Clear All */}
       <div className="footerRow">
